@@ -5,7 +5,7 @@ const App = () => {
 
   return (
     <div className="container">
-     Huy Tú1
+     Huy Tú
     </div>
   )
 }
