@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import Users from '../models/userModel'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import { generateActiveToken } from '../config/generateToken'
 
 
 const authCtrl = {
@@ -16,7 +17,14 @@ const authCtrl = {
 
             const newUser = { name, account, password: passwordHash }
 
-            res.json({ msg: 'ândsajdnsa', data: newUser })
+            const active_token = generateActiveToken({ newUser })
+
+            res.json({
+                status: 'OK',
+                msg: 'Register successfully.',
+                data: newUser,
+                active_token
+            })
 
         } catch (err) {
 
